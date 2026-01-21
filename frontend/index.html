@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThreatLens</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <nav class="navbar">
+    <h1>ThreatLens</h1>
+    <div class="nav-tabs">
+      <button id="analyzeTab" class="active">Analyze</button>
+      <button id="historyTab">History</button>
+    </div>
+  </nav>
+
+  <p class="subtitle">A Phishing Analysis tool</p>
+  <div class="divider"></div>
+
+  <!-- Analyze Section -->
+  <section id="analyzeSection">
+    <div class="input-group">
+      <textarea id="messageInput" placeholder="Type or paste suspicious message here..."></textarea>
+      <button id="analyzeBtn">Analyze Message</button>
+    </div>
+
+    <div id="responseOutput"></div>
+  </section>
+
+  <!-- History Section -->
+  <section id="historySection" style="display:none;">
+    <h2 class="history-title">Analysis History</h2>
+
+    <div class="history-actions">
+      <button id="toggleHistoryBtn">Show More</button>
+      <button id="clearHistoryBtn">Clear History</button>
+    </div>
+
+    <div id="historyContainer"></div>
+  </section>
+
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
