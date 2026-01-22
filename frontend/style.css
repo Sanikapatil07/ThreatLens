@@ -208,5 +208,34 @@ button:hover {
   border-bottom: 2px solid #94B4C1;
   font-weight: 600;
 }
+.risk-score {
+  margin-top: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #eae0cf;
+  border-radius: 6px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.risk-low {
+  background: #16a34a;
+}
+
+.progress-fill.risk-medium {
+  background: #f59e0b;
+}
+
+.progress-fill.risk-high {
+  background: #b91c1c;
+}
 
 

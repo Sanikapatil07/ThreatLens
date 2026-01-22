@@ -7,7 +7,6 @@ const historyTab = document.getElementById("historyTab");
 const analyzeSection = document.getElementById("analyzeSection");
 const historySection = document.getElementById("historySection");
 
-
 const historyContainer = document.getElementById("historyContainer");
 const toggleHistoryBtn = document.getElementById("toggleHistoryBtn");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
@@ -47,14 +46,28 @@ analyzeBtn.addEventListener("click", async () => {
 
     const data = await response.json();
 
+    const finalRisk = data.finalRiskScore;
+
+    // Determine visual class based on FINAL score
     let riskClass = "risk-low";
     if (data.riskLevel === "High") riskClass = "risk-high";
     else if (data.riskLevel === "Medium") riskClass = "risk-medium";
 
+
     responseOutput.innerHTML = `
       <div class="output-card">
-        <span class="risk ${riskClass}">${data.riskLevel} Risk</span>
+        <span class="risk ${riskClass}">
+          ${data.riskLevel} Risk
+        </span>
+
         <p>${data.explanation}</p>
+
+        <div class="risk-score">
+          <strong>Phishing Risk:</strong> ${finalRisk}%
+          <div class="progress-bar">
+            <div class="progress-fill ${riskClass}" style="width:${finalRisk}%"></div>
+          </div>
+        </div>
       </div>
     `;
 
@@ -115,8 +128,20 @@ toggleHistoryBtn.addEventListener("click", () => {
   renderHistory();
 });
 
-clearHistoryBtn.addEventListener("click", () => {
-  historyContainer.innerHTML = "";
+clearHistoryBtn.addEventListener("click", async () => {
+  try {
+    await fetch("http://localhost:5000/api/history", {
+      method: "DELETE"
+    });
+
+    historyData = [];
+    showAllHistory = false;
+    toggleHistoryBtn.textContent = "Show More";
+    historyContainer.innerHTML = "<p>No history available.</p>";
+
+  } catch (error) {
+    alert("Failed to clear history");
+  }
 });
 
 /* ---------------- INIT ---------------- */
@@ -138,5 +163,6 @@ historyTab.addEventListener("click", () => {
   historyTab.classList.add("active");
   analyzeTab.classList.remove("active");
 });
+
 
 
