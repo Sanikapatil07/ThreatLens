@@ -1,77 +1,70 @@
-# ThreatLens
-*Phishing Detection system*
+# ThreatLens   
+Hybrid AI-Powered Phishing Detection System
 
-ThreatLens is a full-stack web application that analyzes text messages for phishing risks using rule-based cybersecurity logic.  
-It provides clear risk classification, human-readable explanations, and a clean dashboard to view analysis history.
+ThreatLens is a full-stack security application that detects phishing messages using a **hybrid approach combining rule-based logic and machine learning**, with clear explainability for every decision.
 
 ---
 
 ## Features
 
--Analyze messages for phishing risk (High / Medium / Low)
--Rule-based detection logic
--History dashboard with severity indicators
--Clean, modern UI using custom color palette
--AI-ready architecture (mocked for development)
--MongoDB Atlas for persistent storage
+- Hybrid phishing detection (Rule-based + ML)
+- NLP-based ML model (TF-IDF + Logistic Regression)
+- Explainable AI output (model confidence + rule triggers)
+- Phishing risk percentage with visual progress bar
+- Persistent analysis history
+- Clean, security-focused UI
+
+---
+
+## How It Works
+
+1. User submits a message for analysis  
+2. Backend applies rule-based phishing checks  
+3. Message is sent to a Python ML microservice for probability scoring  
+4. Hybrid risk score is calculated using ML confidence and rule severity  
+5. UI displays final risk level, percentage, and explanation  
 
 ---
 
 ## Tech Stack
 
 **Frontend**
-- HTML
-- CSS
-- JavaScript (Vanilla)
+- HTML, CSS, JavaScript
 
 **Backend**
-- Node.js
-- Express.js
-
-**Database**
+- Node.js, Express
 - MongoDB Atlas
 
----
-
-## How It Works
-
-1. User enters a message in the Analyze tab  
-2. Backend applies phishing detection rules  
-3. Message is classified as High, Medium, or Low risk  
-4. Result is stored in MongoDB  
-5. History tab displays past analyses with visual indicators  
+**Machine Learning**
+- Python
+- scikit-learn
+- TF-IDF Vectorizer
+- Logistic Regression
 
 ---
 
-## 📸 Screenshots
+## Explainability
 
-### Analyze Message
-![analyze](screenshots/analyze.png)
+Each analysis includes:
+- ML confidence score (%)
+- Rule-based triggers (keywords detected)
+- Final decision based on hybrid scoring logic
 
-### History Dashboard
-![history](screenshots/history.png)
-
----
-
-## Design Decisions
-
-- Used rule-based detection to ensure transparency and control
-- Designed frontend with usability and calm UX in mind
-- Implemented non-destructive history controls (Show More / Clear History)
-- Kept AI integration optional to avoid unnecessary API costs
+This ensures transparency instead of black-box predictions.
 
 ---
 
-## Future Improvements
+## Future Enhancements
 
-- User authentication
-- Per-user analysis history
-- Live AI-generated explanations
-- Deployment to cloud platform
+- Browser extension for real-time email scanning
+- Advanced explainability using SHAP
+- Threat intelligence API integration
 
 ---
 
 ## Author
 
-**Sanika Patil**  
-Final-year B.Tech student | Software Engineering  
+Sanika Patil  
+Final Year B.Tech Student
+
+ 
